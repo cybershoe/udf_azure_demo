@@ -11,8 +11,8 @@ resource "tls_private_key" "ssh_private_key_gen" {
 
 resource "azurerm_ssh_public_key" "ssh_public_key_gen" {
   name = random_pet.ssh_key_name.id
-  resource_group_name = azurerm_resource_group.nginx.name
-  location = azurerm_resource_group.nginx.location
+  resource_group_name = data.azurerm_resource_group.nginx.name
+  location = data.azurerm_resource_group.nginx.location
   public_key = tls_private_key.ssh_private_key_gen.public_key_openssh
 }
 

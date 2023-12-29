@@ -13,5 +13,6 @@ terraform {
 
 provider "azurerm" {
     features {}
+    # this is needed due to UDF restrictions
     skip_provider_registration = true
 }

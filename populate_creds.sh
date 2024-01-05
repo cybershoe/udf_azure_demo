@@ -1,7 +1,7 @@
 #!/bin/bash
 SELF=$_
-(return 0 2>/dev/null) && sourced=1 || sourced=0
-if [ "$sourced" -eq "0" ]; then
+(return 0 2>/dev/null) && SOURCED=1 || SOURCED=0
+if [ "$SOURCED" -eq "0" ]; then
 	>&2 echo "This script must be sourced (i.e.: \"source $SELF\")"
 	exit -1
 fi
@@ -20,4 +20,11 @@ if [ $ARM_CLIENT_SECRET == "null" ]; then
 	echo "ARM_CLIENT_SECRET:          | null" 
 else
 	echo "ARM_CLIENT_SECRET:          | <hidden>"
+fi
+
+export ARM_SUBSCRIPTION_ID=$(az login --service-principal --username $ARM_CLIENT_ID --password $ARM_CLIENT_SECRET --tenant $ARM_TENANT_ID | jq -r .[0].id)
+echo "ARM_SUBSCRIPTION_ID:        | $ARM_SUBSCRIPTION_ID"
+
+if [ "$ARM_SUBSCRIPTION_ID" != "" ]; then
+	echo "Azure CLI logged in"
 fi

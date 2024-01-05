@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../nginxaas-for-azure-snippets"
+		}
+	],
+	"settings": {}
+}

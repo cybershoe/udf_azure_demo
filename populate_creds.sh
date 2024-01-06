@@ -10,7 +10,7 @@ METADATA=$(curl -s http://metadata.udf/cloudAccounts | jq -r '.cloudAccounts[0]'
 echo "Environment Variable        | Value"
 echo "============================+=================================================="
 export TF_VAR_resource_group_name=$(echo $METADATA | jq -r '.resourceGroup')
-echo "TF_VAR_resource_group_name: | $AZURE_RESOURCE_GROUP"
+echo "TF_VAR_resource_group_name: | $TF_VAR_resource_group_name"
 export ARM_TENANT_ID=$(echo $METADATA | jq -r '.credentials[0].tenant')
 echo "ARM_TENANT_ID:              | $ARM_TENANT_ID"
 export ARM_CLIENT_ID=$(echo $METADATA | jq -r '.credentials[0].username')

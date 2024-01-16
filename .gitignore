@@ -33,5 +33,7 @@ override.tf.json
 .terraformrc
 terraform.rc
 
+*_redirect.html
+
 *.pem
 
